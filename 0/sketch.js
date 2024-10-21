@@ -1,25 +1,15 @@
-// TODO:
-//   load image
-//   pixel list
-//   channels
+// TODO: strings and text
+//       iterate letters
+//       iterate words
 
-let mImg;
 
-function preload() {
-  mImg = loadImage("../assets/secret_01.png");
-}
+let mString = "Computers and networks are more than mere tools: They are like living things, themselves.";
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(220);
 
-  image(mImg, 0, 0);
-
-  mImg.loadPixels();
-  // TODO: for loop here
-  mImg.updatePixels();
-
-  image(mImg, 0, 0);
+  print(mString);
 }
 
 function draw() {}

@@ -1,27 +1,17 @@
-// TODO:
-//   look at dimensions
-//   resize
-//   filter
+// TODO: load text
+//       count words
 
-let mImg;
+let mString = "";
 
 function preload() {
-  mImg = loadImage("../assets/arara.jpg");
+  mString = loadStrings("../assets/article.txt");
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(220);
-  print(mImg.width, mImg.height);
 
-  image(mImg, 0, 0);
-
-  mImg.loadPixels();
-  // TODO: for loop
-  mImg.updatePixels();
-
-  image(mImg, 0, 0);
-
+  print(mString, mString.length);
 }
 
 function draw() {}

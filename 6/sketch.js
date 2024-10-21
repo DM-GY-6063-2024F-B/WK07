@@ -1,4 +1,4 @@
-// TODO: use pixel color to draw circles
+// TODO: video
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
