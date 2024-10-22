@@ -1,25 +1,47 @@
-// TODO:
-//   load image
-//   pixel list
-//   channels
-
-let mImg;
+let mStrings = [];
 
 function preload() {
-  mImg = loadImage("../assets/secret_01.png");
+  mStrings = loadStrings("../assets/article.txt");
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(220);
 
-  image(mImg, 0, 0);
+  let mString = mStrings[0];
+  let mWords = mString.toLowerCase().split(" ");
 
-  mImg.loadPixels();
-  // TODO: for loop here
-  mImg.updatePixels();
+  let wordCounts = {};
 
-  image(mImg, 0, 0);
+  for (let idx = 0; idx < mWords.length; idx++) {
+    let mWord = mWords[idx].replaceAll(".", "").replaceAll(",", "").replaceAll("'", "").replaceAll('"', "");
+
+    if (mWord in wordCounts) {
+      wordCounts[mWord] = wordCounts[mWord] + 1;
+    } else {
+      wordCounts[mWord] = 1;
+    }
+  }
+
+  print(wordCounts);
+
+  print("---- HIGH COUNTS");
+  for (let key in wordCounts) {
+    if (wordCounts[key] > 10) {
+      print(key, ":", wordCounts[key]);
+    }
+  }
+
+  print("---- LONG WORDS");
+  for (let key in wordCounts) {
+    if (key.length > 12) {
+      print(key, ":", wordCounts[key]);
+    }
+  }
+
+  textAlign(CENTER, CENTER);
+  textSize(20);
+  text("Open console for\nword counts", width / 2, height / 2);
 }
 
 function draw() {}

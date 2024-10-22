@@ -1,7 +1,4 @@
-// TODO: filter or sort array of colors
-
 let mImg;
-let mColors = [];
 
 function preload() {
   mImg = loadImage("../assets/arara.jpg");
@@ -11,16 +8,25 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   background(220);
 
-  mImg.resize(mImg.width / 2, 0);
-  print(mImg.width, mImg.height);
-
-  image(mImg, 0, 0);
+  mImg.resize(600, 0);
 
   mImg.loadPixels();
-  // TODO: for loop
-  // TODO: sort pixels by red value
-  // TODO: draw pixels at x,y locations
+  for (let idx = 0; idx < mImg.pixels.length; idx += 20*4) {
+    let redVal = mImg.pixels[idx + 0];
+    let greenVal = mImg.pixels[idx + 1];
+    let blueVal = mImg.pixels[idx + 2];
+    let alphaVal = mImg.pixels[idx + 3];
 
+    noStroke();
+    fill(redVal, greenVal, blueVal);
+
+    let pixIdx = idx / 4;
+    let y = int(pixIdx / mImg.width);
+    let x = pixIdx % mImg.width;
+
+    ellipse(x, y, 20);
+  }
+  mImg.updatePixels();
 }
 
 function draw() {}
